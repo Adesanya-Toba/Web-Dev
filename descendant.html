@@ -1,0 +1,28 @@
+<!DOCTYPE html> <!--Indicates an HTML5 document.-->
+<html lang="en">
+    <head>
+        <title>Descendant</title>
+        <style>
+            ul li {
+                color: bisque; /* All child (incl. grandchildren) items within a unordered list should receive styling. */
+            }
+            ul > li { /* Only list items directly inside unordered lists should receive styling. */
+                color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+       <ol>
+            <li>list item one</li>
+            <li>list item two</li>
+            <ul>
+                <li>sub-list item one</li>
+                <ol>
+                    <li>this is grandchild item</li>
+                </ol>
+                <li>sub-list item two</li>
+            </ul>
+            <li>list item three</li>
+       </ol>
+    </body>
+</html>
