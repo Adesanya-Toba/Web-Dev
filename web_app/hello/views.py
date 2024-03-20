@@ -11,6 +11,9 @@ def bruce(request) -> HttpResponse:
     return HttpResponse("Hello, Bruce!")
 
 
+""" Django template"""
+
+
 def greet(request, name: str) -> HttpResponse:
     return render(
         request,
