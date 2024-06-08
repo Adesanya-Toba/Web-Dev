@@ -1,11 +1,20 @@
-from dash import Dash, html
+from dash import Dash, html, dash_table
+import pandas as pd
+
+# Read CSV data into a pandas dataframe
+df: pd.DataFrame = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv"
+)
 
 # Initialize the dash app
 app = Dash()
 
 # The app layout represents the app components that will be
 # displayed on the web browser, shown here as a list.
-app.layout = [html.Div(children="Hello World")]
+app.layout = [
+    html.Div(children="My First App with Data"),
+    dash_table.DataTable(data=df.to_dict("records"), page_size=10),
+]
 
 # Run the app!
 if __name__ == "__main__":
