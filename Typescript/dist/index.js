@@ -57,4 +57,16 @@ let textBox = {
     drag: () => { },
     resize: () => { }
 };
+let quantity = 50;
+console.log(quantity + 70);
+function greet(name) {
+    if (name)
+        console.log(name.toUpperCase());
+    else
+        console.log("Hola!");
+    name = null;
+    console.log(name);
+}
+greet(null);
+greet(undefined);
 //# sourceMappingURL=index.js.map

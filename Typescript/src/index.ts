@@ -112,3 +112,22 @@ let textBox: UIWidget = {
     resize: () => {}
 }
 
+/****************** LITERALS **************************/
+// Annotating variables with a literal either exact or specific values
+type Quantity = 50 | 100 // literal type
+let quantity: Quantity = 50; // quantity can either be 50 or 100 nothing else.
+
+console.log(quantity + 70) // Can still perform normal number operations on the type.
+
+/****************** NULLABLE TYPES ********************/
+function greet(name: string | null | undefined){
+    if (name)
+        console.log(name.toUpperCase())
+    else
+        console.log("Hola!")
+    name = null // You can also assign the null type to a variable
+    console.log(name)
+}
+
+greet(null)
+greet(undefined)
