@@ -52,4 +52,9 @@ function kgToLbs(weight) {
     else
         return parseInt(weight) * 2.2;
 }
+let weight;
+let textBox = {
+    drag: () => { },
+    resize: () => { }
+};
 //# sourceMappingURL=index.js.map
