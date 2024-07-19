@@ -1,5 +1,5 @@
 // Declare a variable using the let keyword
-let age:number = 30;
+let age: number = 30;
 let sales = 123_456_789;
 let course: string = "typescript"
 let is_published: boolean = true
@@ -12,25 +12,25 @@ level = 'hellos' // not recommended
 console.log("Hello world!")
 
 // Creating a function
-function render(document:any){
+function render(document: any) {
     document = "hello from typescript"
     console.log(document)
 }
 
 /****************** ARRAYS ***************************/
-let numbers:number[] = [1,2,3]
+let numbers: number[] = [1, 2, 3]
 numbers.forEach(n => n.toString)
 console.log(numbers)
 
 /****************** TUPLES ***************************/
 // Tuples: fixed length arrays
-let user: [number, string]= [1, "Brian"]
+let user: [number, string] = [1, "Brian"]
 user.push(8) // this produces a bug!!
 
 
 /****************** ENUMS ****************************/
 // Enums: list of related constants
-enum Size {Small = 1, Medium, Large}
+enum Size { Small = 1, Medium, Large }
 let mySize: Size = Size.Medium
 console.log(mySize)
 
@@ -43,7 +43,7 @@ const enum Temperature {
 let thisTemp: Temperature = Temperature.Celsius
 
 /****************** FUNCTIONS ***********************/
-function calculateTax(income: number, taxYear: number = 2019): number{
+function calculateTax(income: number, taxYear: number = 2019): number {
     // ?: means parameter is optional, i.e., param will be undefined.
     if (taxYear < 2022)
         return income * 1.20
@@ -53,14 +53,14 @@ function calculateTax(income: number, taxYear: number = 2019): number{
 calculateTax(10_000)
 
 /****************** OBJECTS *************************/
-let employee:{
+let employee: {
     readonly id: number, // Read-only parameter
     name: string,
     age?: number // Optional argument
     retire: (date: Date) => void // object method
 } = {
-    id:1, 
-    name:"Brian",
+    id: 1,
+    name: "Brian",
     retire: (date: Date) => {
         console.log(date)
     }
@@ -72,9 +72,9 @@ employee.age = 90
 /****************** ALIASES **************************/
 type Employee = {
     readonly id: number,
-    name:string,
-    age?:number,
-    retire: (date:Date) => void
+    name: string,
+    age?: number,
+    retire: (date: Date) => void
 }
 
 let employee2: Employee = {
@@ -86,7 +86,7 @@ let employee2: Employee = {
 }
 
 /****************** UNIONS ****************************/
-function kgToLbs(weight: number | string):number{
+function kgToLbs(weight: number | string): number {
     // Narrow down the union type
     if (typeof weight === "number")
         return weight * 2.2
@@ -108,8 +108,8 @@ type UIWidget = Draggable & Resizable;
 
 // textBox must implement all the methods of the UIWidget type
 let textBox: UIWidget = {
-    drag: () => {},
-    resize: () => {}
+    drag: () => { },
+    resize: () => { }
 }
 
 /****************** LITERALS **************************/
@@ -120,14 +120,37 @@ let quantity: Quantity = 50; // quantity can either be 50 or 100 nothing else.
 console.log(quantity + 70) // Can still perform normal number operations on the type.
 
 /****************** NULLABLE TYPES ********************/
-function greet(name: string | null | undefined){
+function greet(name: string | null | undefined) {
     if (name)
         console.log(name.toUpperCase())
     else
         console.log("Hola!")
     name = null // You can also assign the null type to a variable
-    console.log(name)
 }
 
 greet(null)
 greet(undefined)
+
+/****************** OPTIONAL CHAINING ******************/
+type Customer = {
+    birthday?: Date // making the birthday property optional
+};
+
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(1)
+// Optional property access operator (?.)
+console.log(customer?.birthday?.getFullYear) // prints undefined when customer is null or undefined
+
+// Optional element access operator
+let customerList: number[] = [1, 2, 3, 4]
+console.log(customerList?.[5]) // returns undefined if element does not exist
+
+// Optional call operator
+// Here, log is variable which references a function
+let log: any = (message: string) => console.log(message)
+log = null
+
+log?.("a") // Only execute log if it actually references a function

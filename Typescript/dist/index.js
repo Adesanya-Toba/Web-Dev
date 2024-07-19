@@ -65,8 +65,17 @@ function greet(name) {
     else
         console.log("Hola!");
     name = null;
-    console.log(name);
 }
 greet(null);
 greet(undefined);
+function getCustomer(id) {
+    return id === 0 ? null : { birthday: new Date() };
+}
+let customer = getCustomer(1);
+console.log(customer?.birthday?.getFullYear);
+let customerList = [1, 2, 3, 4];
+console.log(customerList?.[5]);
+let log = (message) => console.log(message);
+log = null;
+log?.("a");
 //# sourceMappingURL=index.js.map
