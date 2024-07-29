@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form'
+import { DevTool } from "@hookform/devtools"
 
 export const YouTubeForm = () => {
     const form = useForm();
-    const { register } = form // This method allows us to register a form control with react hook form
+    const { register, control } = form // Destructing: This method allows us to register a form control with react hook form
     const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
 
     return (
@@ -21,6 +22,7 @@ export const YouTubeForm = () => {
 
                 <button>Submit</button>
             </form>
+            <DevTool control={control} /> {/*Invoke the dev tool */}
         </div>
     )
 }
