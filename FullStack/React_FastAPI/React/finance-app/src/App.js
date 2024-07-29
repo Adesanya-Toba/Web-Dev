@@ -55,6 +55,51 @@ const App = () => {
           </a>
         </div>
       </nav>
+      <div className='container'>
+        <form onSubmit={handleFormSubmit}>
+
+          <div className='mb-3 mt-3'> {/*mt: margin-top, mb: margin-bottom */}
+            <label htmlFor='amount' className='form-label'>
+              Amount
+            </label>
+            <input type='text' className='form-control' id='amount' name='amount' onChange={handleInputChange} value={formData.amount} />
+          </div>
+
+          <div className='mb-3'> {/*mt: margin-top, mb: margin-bottom */}
+            <label htmlFor='category' className='form-label'>
+              Category
+            </label>
+            <input type='text' className='form-control' id='category' name='category' onChange={handleInputChange} value={formData.category} />
+          </div>
+
+          <div className='mb-3'> {/*mt: margin-top, mb: margin-bottom */}
+            <label htmlFor='description' className='form-label'>
+              Description
+            </label>
+            <input type='text' className='form-control' id='description' name='description' onChange={handleInputChange} value={formData.description} />
+          </div>
+
+          <div className='mb-3'> {/*mt: margin-top, mb: margin-bottom */}
+            <label htmlFor='is_income' className='form-label'>
+              Income?
+            </label>
+            <input type='checkbox' id='is_income' name='is_income' onChange={handleInputChange} value={formData.is_income} />
+          </div>
+
+          <div className='mb-3'> {/*mt: margin-top, mb: margin-bottom */}
+            <label htmlFor='date' className='form-label'>
+              Date
+            </label>
+            <input type='text' className='form-control' id='date' name='date' onChange={handleInputChange} value={formData.date} />
+          </div>
+
+          {/*Create button*/}
+          <button type='submit' className='btn btn-primary'>
+            Submit
+          </button>
+        </form>
+
+      </div>
     </div>
   )
 }
