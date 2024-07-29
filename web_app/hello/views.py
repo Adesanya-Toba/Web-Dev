@@ -15,6 +15,15 @@ def bruce(request) -> HttpResponse:
 
 
 def greet(request, name: str) -> HttpResponse:
+    """_summary_
+
+    Args:
+        request (_type_): _description_
+        name (str): _description_
+
+    Returns:
+        HttpResponse: _description_
+    """
     return render(
         request,
         template_name="hello/greet.html",
