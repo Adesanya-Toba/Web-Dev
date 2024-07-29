@@ -14,6 +14,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",  # Allowing the react app to call our fastapi application
+    "http://192.168.1.164:3000",  # Allows other devices on the network to make call from the host IP address to the backend
 ]
 app.add_middleware(
     CORSMiddleware,
