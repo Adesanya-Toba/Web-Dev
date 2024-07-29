@@ -13,7 +13,7 @@ type FormValues = {
 export const YouTubeForm = () => {
     const form = useForm<FormValues>(); // Adding the formvalues types when invoking this
     const { register, control, handleSubmit } = form // Destructing: This method allows us to register a form control with react hook form
-    const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
+    // const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
 
     // Define a function that will be called on submit
     const onSubmit = (data: FormValues) => {
@@ -39,14 +39,14 @@ export const YouTubeForm = () => {
     return (
         <div>
             <h1>YouTube Form ({renderCount / 2})</h1> {/*React strict mode renders components twice in dev mode */}
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <label htmlFor='username'>Username</label>
                 {/* Doing the below allows RHF to start tracking the state of the form.*/}
-                <input type='text' id='username' name={name} ref={ref} onChange={onChange} onBlur={onBlur} />
+                <input type='text' id='username' {...register("username", { required: "Username is required!" })} />
 
                 <label htmlFor='email'>Email</label>
                 {/* Or simply */}
-                <input type='email' id='email' {...register("email")} />
+                <input type='email' id='email' {...register("email", { required: "Email is required!" })} />
 
                 <label htmlFor='channel'>Channel</label>
                 <input type='text' id='channel' {...register("channel")} />
