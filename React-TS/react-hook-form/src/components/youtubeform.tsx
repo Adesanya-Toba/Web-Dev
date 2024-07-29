@@ -18,7 +18,22 @@ export const YouTubeForm = () => {
     // Define a function that will be called on submit
     const onSubmit = (data: FormValues) => {
         console.log('Form submitted!', data)
+        saveToFile(data)
     }
+
+    // Function to save data to a file!
+    const saveToFile = (formData: FormValues) => {
+        const data = JSON.stringify(formData, null, 2);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'form_data.json';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    };
 
     renderCount++
     return (
