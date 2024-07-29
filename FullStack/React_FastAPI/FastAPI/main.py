@@ -34,7 +34,7 @@ class TransactionModel(TransactionBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Create Database dependency

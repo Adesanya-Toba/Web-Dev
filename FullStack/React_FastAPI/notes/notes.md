@@ -11,3 +11,10 @@ Or
 ```bash
 uvicorn main:app --reload
 ```
+
+### To connect our React App to our FastAPI backend
+We need to install a new dependency `axios`
+```bash
+npm install axios
+```
+
