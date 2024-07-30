@@ -12,8 +12,11 @@ type FormValues = {
 
 export const YouTubeForm = () => {
     const form = useForm<FormValues>(); // Adding the formvalues types when invoking this
-    const { register, control, handleSubmit } = form // Destructing: This method allows us to register a form control with react hook form
+    const { register, control, handleSubmit, formState } = form // Destructing: This method allows us to register a form control with react hook form
     // const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
+
+    // Destructuring the errors object from formState
+    const { errors } = formState // The errors object contain the field errors
 
     // Define a function that will be called on submit
     const onSubmit = (data: FormValues) => {
@@ -40,35 +43,49 @@ export const YouTubeForm = () => {
         <div>
             <h1>YouTube Form ({renderCount / 2})</h1> {/*React strict mode renders components twice in dev mode */}
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                <label htmlFor='username'>Username</label>
-                {/* Doing the below allows RHF to start tracking the state of the form.*/}
-                <input type='text' id='username' {...register("username", {
-                    required: {
-                        value: true,
-                        message: "Username is required!"
-                    }
-                })} />
+                <div className='form-control'>
+                    <label htmlFor='username'>Username</label>
+                    {/* Doing the below allows RHF to start tracking the state of the form.*/}
+                    <input type='text' id='username' {...register("username", {
+                        required: {
+                            value: true,
+                            message: "Username is required!"
+                        }
+                    })} />
+                    <p className='error'>{errors.username?.message}</p>
+                </div>
 
-                <label htmlFor='email'>Email</label>
-                {/* Or simply */}
-                <input type='email' id='email' {...register("email", {
-                    pattern: {
-                        value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                        message: "Invalid email format",
-                    },
-                })} />
+                <div className='form-control'>
+                    <label htmlFor='email'>Email</label>
+                    {/* Or simply */}
+                    <input type='email' id='email' {...register("email", {
+                        pattern: {
+                            value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                            message: "Invalid email format",
+                        },
+                    })} />
+                    <p className='error'>{errors.email?.message}</p>
+                </div>
 
-                <label htmlFor='channel'>Channel</label>
-                <input type='text' id='channel' {...register("channel", {
-                    minLength: {
-                        value: 8,
-                        message: "Minimum length is 8",
-                    }
-                })} />
+                <div className='form-control'>
+                    <label htmlFor='channel'>Channel</label>
+                    <input type='text' id='channel' {...register("channel", {
+                        minLength: {
+                            value: 8,
+                            message: "Minimum length is 8",
+                        },
+                        required: {
+                            value: true,
+                            message: "Channel is required."
+                        }
+                    })} />
+                    <p className='error'>{errors.channel?.message}</p>
+                </div>
 
                 <button>Submit</button>
-            </form>
+
+            </form >
             <DevTool control={control} /> {/*Invoke the dev tool */}
-        </div>
+        </div >
     )
 }
