@@ -18,7 +18,7 @@ export const YouTubeForm = () => {
     // Define a function that will be called on submit
     const onSubmit = (data: FormValues) => {
         console.log('Form submitted!', data)
-        saveToFile(data)
+        // saveToFile(data)
     }
 
     // Function to save data to a file!
@@ -42,14 +42,29 @@ export const YouTubeForm = () => {
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <label htmlFor='username'>Username</label>
                 {/* Doing the below allows RHF to start tracking the state of the form.*/}
-                <input type='text' id='username' {...register("username", { required: "Username is required!" })} />
+                <input type='text' id='username' {...register("username", {
+                    required: {
+                        value: true,
+                        message: "Username is required!"
+                    }
+                })} />
 
                 <label htmlFor='email'>Email</label>
                 {/* Or simply */}
-                <input type='email' id='email' {...register("email", { required: "Email is required!" })} />
+                <input type='email' id='email' {...register("email", {
+                    pattern: {
+                        value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                        message: "Invalid email format",
+                    },
+                })} />
 
                 <label htmlFor='channel'>Channel</label>
-                <input type='text' id='channel' {...register("channel")} />
+                <input type='text' id='channel' {...register("channel", {
+                    minLength: {
+                        value: 8,
+                        message: "Minimum length is 8",
+                    }
+                })} />
 
                 <button>Submit</button>
             </form>
