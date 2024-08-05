@@ -50,7 +50,7 @@ export const YouTubeForm = () => {
           <input
             type="text"
             id="username"
-            {...register("username", {
+            {...register("username", { // register automatically starts tracking the form state
               required: {
                 value: true,
                 message: "Username is required!",
@@ -78,7 +78,11 @@ export const YouTubeForm = () => {
                   fieldValue !== "admin@example.com" ||
                   "Enter a different email address"
                 );
-              }}
+              },
+                notBlackListed: (fieldValue) => {
+                  return !fieldValue.endsWith("baddomain.com") || 
+                  "This domain is not supported."
+                }}
             })}
           />
           <p className="error">{errors.email?.message}</p>
