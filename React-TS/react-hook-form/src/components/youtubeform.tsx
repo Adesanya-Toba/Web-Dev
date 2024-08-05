@@ -11,7 +11,18 @@ type FormValues = {
 };
 
 export const YouTubeForm = () => {
-  const form = useForm<FormValues>(); // Adding the formvalues types when invoking this
+  const form = useForm<FormValues>({
+    defaultValues: async () => {
+      // Fetching default values from an API endpoint
+      const response = await fetch ("http://jsonplaceholder.typicode.com/users/1");
+      const data = await response.json()
+      return{
+        username: "Batman",
+        email: data.email,
+        channel: ""
+      }
+    }
+  }); // Adding the formvalues types when invoking this
   const { register, control, handleSubmit, formState } = form; // Destructing: This method allows us to register a form control with react hook form
   // const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
 
@@ -50,7 +61,8 @@ export const YouTubeForm = () => {
           <input
             type="text"
             id="username"
-            {...register("username", { // register automatically starts tracking the form state
+            {...register("username", {
+              // register automatically starts tracking the form state
               required: {
                 value: true,
                 message: "Username is required!",
@@ -74,15 +86,18 @@ export const YouTubeForm = () => {
               },
               validate: {
                 notAdmin: (fieldValue) => {
-                return (
-                  fieldValue !== "admin@example.com" ||
-                  "Enter a different email address"
-                );
-              },
+                  return (
+                    fieldValue !== "admin@example.com" ||
+                    "Enter a different email address"
+                  );
+                },
                 notBlackListed: (fieldValue) => {
-                  return !fieldValue.endsWith("baddomain.com") || 
-                  "This domain is not supported."
-                }}
+                  return (
+                    !fieldValue.endsWith("baddomain.com") ||
+                    "This domain is not supported."
+                  );
+                },
+              },
             })}
           />
           <p className="error">{errors.email?.message}</p>
