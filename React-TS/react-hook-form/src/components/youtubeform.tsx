@@ -11,25 +11,29 @@ type FormValues = {
   social: {
     twitter: string;
     facebook: string;
-  }
+  };
+  phoneNumbers: string[];
 };
 
 export const YouTubeForm = () => {
   const form = useForm<FormValues>({
     defaultValues: async () => {
       // Fetching default values from an API endpoint
-      const response = await fetch ("http://jsonplaceholder.typicode.com/users/1");
-      const data = await response.json()
-      return{
+      const response = await fetch(
+        "http://jsonplaceholder.typicode.com/users/1"
+      );
+      const data = await response.json();
+      return {
         username: "Batman",
         email: data.email,
         channel: "",
         social: {
           twitter: "",
-          facebook: ""
-        }
-      }
-    }
+          facebook: "",
+        },
+        phoneNumbers: ["", ""],
+      };
+    },
   }); // Adding the formvalues types when invoking this
   const { register, control, handleSubmit, formState } = form; // Destructing: This method allows us to register a form control with react hook form
   // const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
@@ -135,16 +139,33 @@ export const YouTubeForm = () => {
           <input
             type="text"
             id="twitter"
-            {...register("social.twitter")}
+            {...register("social.twitter", {
+              required: { value: true, message: "Twitter info is required!" },
+            })}
           />
+          <p className="error">{errors.social?.twitter?.message}</p>
         </div>
 
         <div className="form-control">
           <label htmlFor="facebook">Facebook</label>
+          <input type="text" id="facebook" {...register("social.facebook")} />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="primary-phone">Primary Phone Number</label>
           <input
             type="text"
-            id="facebook"
-            {...register("social.facebook")}
+            id="primary-phone"
+            {...register("phoneNumbers.0")}
+          />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="secondary-phone">Secondary Phone Number</label>
+          <input
+            type="text"
+            id="secondary-phone"
+            {...register("phoneNumbers.1")}
           />
         </div>
 
