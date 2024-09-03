@@ -12,7 +12,7 @@ type FormValues = {
 
 export const YouTubeForm = () => {
   const form = useForm<FormValues>(); // Adding the formvalues types when invoking this
-  const { register, control, handleSubmit, formState } = form; // Destructing: This method allows us to register a form control with react hook form
+  const { register, control, handleSubmit, formState, reset } = form; // Destructing: This method allows us to register a form control with react hook form
   // const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
 
   // Destructuring the errors object from formState
@@ -21,6 +21,7 @@ export const YouTubeForm = () => {
   // Define a function that will be called on submit
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted!", data);
+    // reset()
     // saveToFile(data)
   };
 
@@ -78,7 +79,11 @@ export const YouTubeForm = () => {
                   fieldValue !== "admin@example.com" ||
                   "Enter a different email address"
                 );
-              }}
+              }},
+              required: {
+                value: true,
+                message: "Email is required!"
+              }
             })}
           />
           <p className="error">{errors.email?.message}</p>
