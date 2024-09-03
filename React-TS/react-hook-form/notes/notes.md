@@ -9,3 +9,8 @@ To verify the RHF is actually working, install the react-hook-form devtools with
 ```bash
 npm run dev
 ```
+
+### Expose Application on the Network with
+```bash
+npm run dev -- --host
+```
