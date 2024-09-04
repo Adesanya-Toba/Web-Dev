@@ -53,6 +53,7 @@ export const YouTubeForm = () => {
   // Define a function that will be called on submit
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted!", data);
+    // reset()
     // saveToFile(data)
   };
 
