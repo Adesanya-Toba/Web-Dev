@@ -1,4 +1,7 @@
 /** Understanding Destructing/Unpacking */
+
+import MyComponent from "./components/MyComponent";
+
 /** Create a JS object */
 const obj = { obj_name: "Toba", job: "engineer" };
 const { obj_name } = obj; // unpacks just the object name from the obj
@@ -59,6 +62,12 @@ const App = () => {
       <Box label="hello" textColor="Purple" bgColor="Lavender" large={false} />
       <Box label="green stuff" textColor="white" bgColor="green" />{" "}
       {/*Large property is not passed so it acts as undefined. */}
+      <MyComponent bgColor="Yellow" height={40}>
+        Children is the default object
+      </MyComponent>
+      <MyComponent bgColor="Pink" height={90}>
+        Nothing much.
+      </MyComponent>
     </div>
   );
 };
