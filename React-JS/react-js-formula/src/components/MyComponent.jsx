@@ -1,4 +1,5 @@
 const MyComponent = (props) => {
+  // Children is the default object passed into a div
   const { children, bgColor, height } = props;
   console.log(props);
   return (
