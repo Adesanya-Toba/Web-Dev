@@ -39,12 +39,14 @@ export const YouTubeForm = () => {
       };
     },
   }); // Adding the formvalues types when invoking this
+
   const { register, control, handleSubmit, formState } = form; // Destructing: This method allows us to register a form control with react hook form
   // const { name, ref, onChange, onBlur } = register("username") // This method returns 4 methods that we need to hook into the form control
 
   // Destructuring the errors object from formState
   const { errors } = formState; // The errors object contain the field errors
 
+  // Create a dynamic form
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
     control,
