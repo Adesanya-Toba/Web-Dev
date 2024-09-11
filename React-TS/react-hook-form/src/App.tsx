@@ -1,4 +1,4 @@
-import { DynamicForm } from "./components/dynamicform";
+import DynamicForm from "./components/dynamicform";
 
 function App() {
   return (
