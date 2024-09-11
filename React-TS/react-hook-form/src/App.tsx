@@ -1,15 +1,11 @@
-import './App.css'
-import { YouTubeForm } from './components/youtubeform'
+import DynamicForm from "./components/dynamicform";
 
 function App() {
-
   return (
-
     <div>
-      <YouTubeForm />
+      <DynamicForm />
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
