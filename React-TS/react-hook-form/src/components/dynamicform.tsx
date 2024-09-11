@@ -8,33 +8,38 @@ type ActuatorValues = {
   }[];
 };
 
+type PhoneNumber = {
+  phoneNumber: {
+    value: string;
+  }[];
+};
+
 export default function DynamicForm() {
-  const form = useForm<ActuatorValues>({
+  const form = useForm<PhoneNumber>({
     defaultValues: {
-      actuatorDetails: [
+      phoneNumber: [
         {
-          name: "Enter Actuator Name",
-          macAddress: "Enter MAC_Address",
-          password: "Enter Bluetooth password",
+          value: "",
         },
       ],
     },
   });
 
-  const { handleSubmit, reset, control } = form;
+  const { handleSubmit, reset, control, register } = form;
 
-  async function onSubmit(data: ActuatorValues) {
+  async function onSubmit(data: PhoneNumber) {
+    console.log(data);
     console.log("Form Submitted!");
     reset();
   }
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "actuatorDetails",
+    name: "phoneNumber",
   });
 
   function handleAppend() {
-    append({ name: "", macAddress: "", password: "" });
+    append({ value: "" });
   }
 
   function handleRemove(index: number) {
@@ -52,7 +57,7 @@ export default function DynamicForm() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
-          <form className="mb-0 space-y-6" action="#" method="POST">
+          <form className="mb-0 space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 htmlFor="email"
@@ -103,6 +108,50 @@ export default function DynamicForm() {
                   <option value="medium">11 to 50 employees</option>
                   <option value="large">50+ employees</option>
                 </select>
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="phone-number"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Phone Number
+              </label>
+              <div className="space-y-2">
+                {fields.map((field, index) => {
+                  return (
+                    <div key={field.id} className="flex items-center space-x-5">
+                      <input
+                        type="tel"
+                        autoComplete="tel"
+                        {...register(`phoneNumber.${index}.value` as const)}
+                        className="mt-1"
+                        placeholder="Enter Phone Number"
+                      />
+                      {index > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => remove(index)}
+                          className="flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm
+                          text-sm font-medium text-white bg-red-700 hover:bg-red-700 focus:outline-none
+                          focus:ring-2 focus:ring-offset-1 focus:ring-red-500"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+                <button
+                  type="button"
+                  onClick={() => append({ value: "" })}
+                  className="flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm
+                text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Add phone number
+                </button>
+                {/* <input type="tel" name="phone-number" autoComplete="tel" /> */}
               </div>
             </div>
 
