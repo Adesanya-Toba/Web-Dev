@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    [type='text'],
+    input:where(:not([type])),
+    [type='email'],
+    [type='url'],
+    [type='password'],
+    [type='number'],
+    [type='date'],
+    [type='datetime-local'],
+    [type='month'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [type='week'],
+    [multiple],
+    textarea,
+    select {
+       @apply w-full border-gray-300 rounded-lg shadow-sm
+       focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500
+    }
+    [type='checkbox'],
+    [type='radio']{
+        @apply text-indigo-600 focus:ring-indigo-500 rounded size-4 border-gray-600
+    }
+}

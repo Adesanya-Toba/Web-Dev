@@ -43,43 +43,103 @@ export default function DynamicForm() {
 
   // Render Form
   return (
-    <form>
-      <div className="space-y-12">
-        <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">
-            Profile
-          </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
-            Enter your details.
-          </p>
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 px-6 lg:px-2">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Dynamic Form
+        </h2>
+      </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-4">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+          <form className="mb-0 space-y-6" action="#" method="POST">
+            <div>
               <label
-                htmlFor="username"
-                className="block test-sm font-medium leading-6 text-gray-900"
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
               >
-                Username
+                Email Address
               </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-insert ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600 sm:max-w-md">
-                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-                    hello.com/
-                  </span>
-                  <input
-                    id="username"
-                    name="username"
-                    type="text"
-                    placeholder="janesmith"
-                    autoComplete="username"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                </div>
+              <div className="mt-1">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  autoComplete="email"
+                  required
+                  className=""
+                />
               </div>
             </div>
-          </div>
+
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Password
+              </label>
+              <div className="mt-1">
+                <input
+                  type="password"
+                  name="password"
+                  autoComplete="current-password"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="company-size"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Company Size
+              </label>
+              <div className="mt-1">
+                <select name="company-size" id="company-size">
+                  <option value="">Please select</option>
+                  <option value="small">1 to 10 employees</option>
+                  <option value="medium">11 to 50 employees</option>
+                  <option value="large">50+ employees</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="terms-and-privacy"
+                name="terms-and-privacy"
+              />
+              <label
+                htmlFor="terms-and-privacy"
+                className="ml-2  block text-sm text-gray-900"
+              >
+                I agree to the{" "}
+                <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                  Terms{" "}
+                </a>
+                and{" "}
+                <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                  Privacy Policy
+                </a>
+                .
+              </label>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm
+                text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Sign up
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </form>
+    </div>
   );
 }
