@@ -49,13 +49,13 @@ export default function DynamicForm() {
   // Render Form
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 px-6 lg:px-2">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+      <div className="mb-3 sm:mx-auto sm:w-full sm:max-w-md">
+        <h2 className="text-6xl text-center font-bold text-gray-900">
           Dynamic Form
         </h2>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="my-3 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
           <form className="mb-0 space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
@@ -143,6 +143,7 @@ export default function DynamicForm() {
                     </div>
                   );
                 })}
+
                 <button
                   type="button"
                   onClick={() => append({ value: "" })}
@@ -151,7 +152,6 @@ export default function DynamicForm() {
                 >
                   Add phone number
                 </button>
-                {/* <input type="tel" name="phone-number" autoComplete="tel" /> */}
               </div>
             </div>
 
