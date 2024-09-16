@@ -1,15 +1,28 @@
-import Box1 from "./components/Box1";
-import Box2 from "./components/Box2";
-import Box3 from "./components/Box3";
-import Box4 from "./components/Box4";
+import QuoteBox1 from "./components/QuoteBox1";
+
+const quote1 = {
+  text: "One of my most productive days was throwing away 1000 lines of code.",
+  author: "Ken Thompson",
+  bio: "Designer of Unix Operating System",
+};
+
+const quote2 = {
+  text: "A ship in port is safe, but that's not what ships are built for.",
+  author: "Admiral Grace Hopper",
+  bio: "Inventor of Programming Compilers",
+};
+
+const quote3 = {
+  text: "If you optimize everything, you will always be unhappy.",
+  author: "Donald Knuth",
+  bio: "Pioneer of Algorithm Analysis",
+};
+
 const App = () => {
   return (
-    <>
-      <Box1 />
-      <Box2 />
-      <Box3 />
-      <Box4 />
-    </>
+    <div className="flex justify-center">
+      <QuoteBox1 quote={quote1} />
+    </div>
   );
 };
 
