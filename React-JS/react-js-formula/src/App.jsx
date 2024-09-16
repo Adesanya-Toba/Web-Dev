@@ -1,4 +1,5 @@
 import QuoteBox1 from "./components/QuoteBox1";
+import QuoteBox2 from "./components/QuoteBox2";
 
 const quote1 = {
   text: "One of my most productive days was throwing away 1000 lines of code.",
@@ -20,8 +21,9 @@ const quote3 = {
 
 const App = () => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center flex-col items-center">
       <QuoteBox1 quote={quote1} />
+      <QuoteBox2 quote={quote2} />
     </div>
   );
 };
