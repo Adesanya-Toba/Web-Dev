@@ -6,3 +6,7 @@
 
 `npm install -D tailwindcss postcss autoprefixer`
 `npx tailwindcss init -p`
+
+### Hooks
+
+Hooks are functions in react that help to achieve some additional functionality inside our component.
