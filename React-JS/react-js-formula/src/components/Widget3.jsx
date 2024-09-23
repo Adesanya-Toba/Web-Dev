@@ -4,7 +4,7 @@ const Widget3 = () => {
   const [showIcon, setShowIcon] = useState(false);
   return (
     <div className="bg-purple-100 border border-purple-300 p-4 rounded-lg m-4 flex flex-col items-center">
-      {showIcon && (
+      {showIcon && ( // render icon if showIcon is true
         <i className="fa-solid fa-poop text-fuchsia-500 text-3xl mb-4"></i>
       )}
 
