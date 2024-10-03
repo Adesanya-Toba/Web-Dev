@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import CatCard from "./components/CatCard";
-import NavButton from "./components/NavButton";
-import CATS from "./components/cats";
+import CatCard from "./components/CatCarousel/CatCard";
+import NavButton from "./components/CatCarousel/NavButton";
+import CATS from "./components/CatCarousel/cats";
 
 const App = () => {
   const [catIndex, setCatIndex] = useState(4);
