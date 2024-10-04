@@ -26,3 +26,7 @@ The below will render only when `showIcon` is true.
 ### Install Clsx
 
 `npm install clsx`: to refactor conditionals in the class names.
+
+### Install React Router DOM
+
+`npm install react-router-dom`: to enable frontend routing in react.
