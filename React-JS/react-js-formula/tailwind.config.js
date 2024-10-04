@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        bubblegum: ["Bubblegum Sans"],
+        open: ["Open Sans"]
+      }
+    },
   },
   plugins: [],
 }
