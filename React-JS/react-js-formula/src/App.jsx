@@ -1,30 +1,33 @@
 import { useState } from "react";
-import RecipeCard from "./components/RecipeCard";
-
-const RECIPE = {
-  name: "Pho",
-  image_url: "https://static-task-assets.react-formula.com/239035.jpg",
-};
+import Joke from "./components/Joke";
 
 const App = () => {
-  const [recipe, setRecipe] = useState(null);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [joke, setJoke] = useState(null);
 
-  const fetchRecipe = () => {
-    fetch(
-      "https://api.react-formula.com/learning-api/demos/using-fetch/recipes"
-    )
+  const fetchJoke = () => {
+    fetch("https://api.react-formula.com/learning-api/demos/random-joke/jokes")
       .then((response) => response.json())
-      .then((data) => setRecipe(data));
+      .then((data) => {
+        setShowAnswer(false);
+        setJoke(data);
+      });
   };
   return (
     <div className="flex flex-col items-center justify-center">
-      {recipe !== null ? <RecipeCard recipe={recipe} /> : null}
+      {joke && <Joke joke={joke} showAnswer={showAnswer} />}
 
       <button
-        className="rounded-full mt-4 px-4 py-2 bg-blue-500 text-white"
-        onClick={fetchRecipe}
+        className="bg-green-500 rounded-lg text-green-200 p-3 mt-2"
+        onClick={() => setShowAnswer(!showAnswer)}
       >
-        Get random recipe
+        Reveal answer
+      </button>
+      <button
+        className="bg-red-500 rounded-lg text-red-200 p-3 mt-4"
+        onClick={fetchJoke}
+      >
+        Get new joke
       </button>
     </div>
   );
