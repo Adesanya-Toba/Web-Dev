@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Joke from "./components/Joke";
 
 const App = () => {
@@ -6,13 +6,18 @@ const App = () => {
   const [joke, setJoke] = useState(null);
 
   const fetchJoke = () => {
+    setShowAnswer(false);
     fetch("https://api.react-formula.com/learning-api/demos/random-joke/jokes")
       .then((response) => response.json())
       .then((data) => {
-        setShowAnswer(false);
         setJoke(data);
       });
   };
+
+  useEffect(() => {
+    fetchJoke();
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center">
       {joke && <Joke joke={joke} showAnswer={showAnswer} />}
