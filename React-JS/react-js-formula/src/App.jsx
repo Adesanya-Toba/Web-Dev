@@ -1,39 +1,26 @@
 import { useState, useEffect } from "react";
-import Joke from "./components/Joke";
+import ProfileCard from "./components/ProfileCard";
 
 const App = () => {
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [joke, setJoke] = useState(null);
-
-  const fetchJoke = () => {
-    setShowAnswer(false);
-    fetch("https://api.react-formula.com/learning-api/demos/random-joke/jokes")
+  const [profiles, setProfiles] = useState([]);
+  const fetchProfile = () => {
+    fetch(
+      "https://api.react-formula.com/learning-api/demos/teammates-project/profiles"
+    )
       .then((response) => response.json())
-      .then((data) => {
-        setJoke(data);
-      });
+      .then((data) => setProfiles(data));
   };
 
   useEffect(() => {
-    fetchJoke();
+    fetchProfile();
   }, []);
 
+  const profileCards = profiles.map((profile, idx) => (
+    <ProfileCard key={idx} profile={profile} />
+  ));
   return (
-    <div className="flex flex-col items-center justify-center">
-      {joke && <Joke joke={joke} showAnswer={showAnswer} />}
-
-      <button
-        className="bg-green-500 rounded-lg text-green-200 p-3 mt-2"
-        onClick={() => setShowAnswer(!showAnswer)}
-      >
-        Reveal answer
-      </button>
-      <button
-        className="bg-red-500 rounded-lg text-red-200 p-3 mt-4"
-        onClick={fetchJoke}
-      >
-        Get new joke
-      </button>
+    <div className="flex justify-center bg-neutral-100 min-h-screen pb-8">
+      <div className="w-full max-w-md mt-2">{profileCards}</div>
     </div>
   );
 };
