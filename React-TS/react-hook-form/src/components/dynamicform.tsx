@@ -1,12 +1,5 @@
 import { useFieldArray, useForm } from "react-hook-form";
 
-type ActuatorValues = {
-  actuatorDetails: {
-    name: string;
-    macAddress: string;
-    password: string;
-  }[];
-};
 
 type PhoneNumber = {
   phoneNumber: {
@@ -37,14 +30,6 @@ export default function DynamicForm() {
     control,
     name: "phoneNumber",
   });
-
-  function handleAppend() {
-    append({ value: "" });
-  }
-
-  function handleRemove(index: number) {
-    remove(index);
-  }
 
   // Render Form
   return (
