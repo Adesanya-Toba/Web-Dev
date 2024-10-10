@@ -7,7 +7,7 @@ export default function App() {
   return (
     <>
       <div className="bg-purple-700 flex py-4 justify-center">
-        <div className="flex justify-between w-full max-w-3xl px-4 text-purple-200">
+        <div className="flex justify-between w-full max-w-4xl px-4 text-purple-200">
           <div className="text-2xl ">Toba's Recipes</div>
           <button onClick={() => setIsModalOpen(true)}>
             <i className="fa-solid fa-right-to-bracket mr-2"></i>Sign In
