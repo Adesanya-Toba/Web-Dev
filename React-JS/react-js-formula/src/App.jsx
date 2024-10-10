@@ -1,22 +1,14 @@
-import { useState } from "react";
-import CookieRecipe from "./components/CookieRecipe";
-import Modal from "./components/Modal";
+// import PlayingCard from "./components/PlayingCard";
+import PlayingCard from "./components/PlayingCard";
 
-export default function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const App = () => {
   return (
-    <>
-      <div className="bg-purple-700 flex py-4 justify-center">
-        <div className="flex justify-between w-full max-w-4xl px-4 text-purple-200">
-          <div className="text-2xl ">Toba's Recipes</div>
-          <button onClick={() => setIsModalOpen(true)}>
-            <i className="fa-solid fa-right-to-bracket mr-2"></i>Sign In
-          </button>
-        </div>
-      </div>
-
-      <CookieRecipe />
-      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
-    </>
+    <div className="flex justify-center">
+      <PlayingCard value="A" icon="fa-heart" color="text-red-500" />
+      <PlayingCard value="10" icon="fa-spade" color="text-black" />
+      <PlayingCard value="2" icon="fa-diamond" color="text-green-500" />
+    </div>
   );
-}
+};
+
+export default App;
