@@ -1,13 +1,15 @@
-import songs from "./components/songs";
-import SongItem from "./components/SongItem";
+import properties from "./components/properties";
+import PropertyItem from "./components/PropertyItem";
 
 const App = () => {
-  const songItems = songs.map((song, idx) => (
-    <SongItem key={idx} song={song} />
+  const propertyItems = properties.map((property, idx) => (
+    <PropertyItem key={idx} property={property} />
   ));
   return (
     <div className="flex justify-center">
-      <div className="w-full max-w-2xl">{songItems}</div>
+      <div className="w-full max-w-5xl flex flex-wrap justify-center">
+        {propertyItems}
+      </div>
     </div>
   );
 };
