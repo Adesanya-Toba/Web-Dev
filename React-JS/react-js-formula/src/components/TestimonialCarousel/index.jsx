@@ -1,6 +1,6 @@
 import { useState } from "react";
 import TestimonialCard from "./TestimonialCard";
-import testimonials from "../testimonials";
+import testimonials from "../constants/testimonials";
 
 const TestimonialCarousel = () => {
   const [startIdx, setStartIdx] = useState(1);
