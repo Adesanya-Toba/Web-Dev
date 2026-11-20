@@ -16,3 +16,15 @@ interface Painter {
 function paintPainting(painter: Painter, painting: string): boolean {
   painter.finish();
 }
+
+let bestSong = Math.random() > 0.5 ? "Chain of Fools" : "Respect";
+
+let rocker;
+
+rocker = "Joan Jett";
+rocker.toUpperCase();
+
+rocker = 19.58;
+rocker.toPrecision(1);
+
+rocker.toUppercase();
