@@ -64,3 +64,12 @@ mathematician2?.length;
 
 let mathematician3: string | undefined;
 mathematician3?.length;
+
+// Type Aliases: typically given names in PascalCase
+type RawData = boolean | number | string | null | undefined;
+let rawData1: RawData;
+let rawData2: RawData;
+
+type Id = number | string;
+
+type MaybeId = Id | undefined | null;
